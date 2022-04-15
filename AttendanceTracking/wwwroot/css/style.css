@@ -1,0 +1,10 @@
+﻿body {
+}
+
+.WelcomeText {
+    position: absolute;
+    left: 820px;
+    top: 200px;
+    width: 310px;
+    height: 100px;
+}
