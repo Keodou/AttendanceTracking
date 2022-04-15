@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AttendanceTracking.Migrations
 {
     [DbContext(typeof(AttendanceTrackingDbContext))]
-    [Migration("20220415092455__initial")]
+    [Migration("20220415145115__initial")]
     partial class _initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,8 +30,8 @@ namespace AttendanceTracking.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool?>("Attendance")
-                        .HasColumnType("bit");
+                    b.Property<string>("Attendance")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Group")
                         .IsRequired()

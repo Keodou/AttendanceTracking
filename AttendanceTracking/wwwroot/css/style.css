@@ -8,3 +8,11 @@
     width: 310px;
     height: 100px;
 }
+
+.btn-primary {
+    position: absolute;
+    left: 1620px;
+    top: 190px;
+    width: 25px;
+    height: 25px;
+}

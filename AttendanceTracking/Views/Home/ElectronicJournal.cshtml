@@ -16,7 +16,7 @@
     <body>
         <div class="panel-text-table">
             <h2>Журнал учета посещаемости студентов</h2>
-
+            <a asp-controller="Home" asp-action="StudentsEdit">Добавить</a>
             @foreach (Student entity in Model) {
                 <table class="table table-sm table-striped table-bordered">
                     <thead>
@@ -36,7 +36,8 @@
                         </tr>
                 </tbody>
             </table>
-            <a asp-controller="Home" asp-action="StudentsEdit" asp-route-id="@entity.Id">Редактировать</a>
+            <a asp-controller="Home" asp-action="StudentsEdit" asp-route-id="@entity.Id">редактировать</a>
+
             <form method="post" asp-controller="Home" asp-action="StudentsDelete">
                 <input type="hidden" name="Id" value="@entity.Id"/>
                 <input type="submit" value="удалить"/>

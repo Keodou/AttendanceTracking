@@ -1,9 +1,13 @@
 ﻿@model Student
 
+@{
+    ViewData["Title"] = "Students Edit";
+}
+
 <div>
-    <h1>Редактировать статью</h1>
+    <h1>Редактировать данные</h1>
     <div>
-        <form asp-controller="Form" asp-action="StudentsEdit" method="post">
+        <form asp-controller="Home" asp-action="StudentsEdit" method="post">
             <input type="hidden" asp-for="Id" />
             <div asp-validation-summary="All"></div>
 
@@ -23,6 +27,12 @@
                 <label asp-for="Attendance"></label>
                 <input asp-for="Attendance" />
                 <span asp-validation-for="Attendance"></span>
+            </div>
+
+            <div>
+                <label asp-for="Id"></label>
+                <input asp-for="Id" />
+                <span asp-validation-for="Id"></span>
             </div>
             <input type="submit" value="Сохранить" />
         </form>

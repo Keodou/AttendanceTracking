@@ -32,6 +32,7 @@ namespace AttendanceTracking.Models
             {
                 context.Entry(entity).State = EntityState.Modified;
             }
+            context.SaveChanges();
 
             return entity.Id;
         }
