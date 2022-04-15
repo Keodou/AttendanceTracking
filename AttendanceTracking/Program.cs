@@ -6,8 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AttendanceTrackingDbContext>(x => x.UseSqlServer(
-    "Data Source=(local); Database=AttendanceTracking; Persist Security Info=False; MultipleActiveResultSets=True; Trusted_Connection=True;"
+    "Data Source=(localdb)\\MSSQLLocalDB; Database=AttendanceTracking; Persist Security Info=False; MultipleActiveResultSets=True; Trusted_Connection=True;"
     ));
+builder.Services.AddTransient<StudentsRepository>();
 
 var app = builder.Build();
 

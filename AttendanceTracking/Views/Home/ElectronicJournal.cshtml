@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IQueryable<AttendanceTracking.Models.Student>
+
+@{
     ViewData["Title"] = "Electronic Journal";
 }
 
@@ -14,24 +16,32 @@
     <body>
         <div class="panel-text-table">
             <h2>Журнал учета посещаемости студентов</h2>
-            <table class="table table-sm table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Имя</th>
-                        <th>Группа</th>
-                        <th>Посещаемость</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1234234</td>
-                        <td>Дмитрий Коробейщиков</td>
-                        <td>группа 90001997</td>
-                        <td>+</td>
-                   </tr>
+
+            @foreach (Student entity in Model) {
+                <table class="table table-sm table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Имя</th>
+                            <th>Группа</th>
+                            <th>Посещаемость</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@entity.Id</td>
+                            <td>@entity.Name</td>
+                            <td>@entity.Group</td>
+                            <td>@entity.Attendance</td>
+                        </tr>
                 </tbody>
             </table>
+            <a asp-controller="Home" asp-action="StudentsEdit" asp-route-id="@entity.Id">Редактировать</a>
+            <form method="post" asp-controller="Home" asp-action="StudentsDelete">
+                <input type="hidden" name="Id" value="@entity.Id"/>
+                <input type="submit" value="удалить"/>
+            </form>
+            }
         </div>
     </body>
 </html>

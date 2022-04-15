@@ -49,7 +49,7 @@ namespace AttendanceTracking.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Student",
+                name: "Students",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -59,7 +59,7 @@ namespace AttendanceTracking.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Student", x => x.Id);
+                    table.PrimaryKey("PK_Students", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -169,7 +169,7 @@ namespace AttendanceTracking.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Student",
+                table: "Students",
                 columns: new[] { "Id", "Attendance", "Group", "Name" },
                 values: new object[] { new Guid("716c2e99-6f6c-4472-81a5-43c56e11637c"), null, "90001997", "Кирилл Володько" });
 
@@ -231,7 +231,7 @@ namespace AttendanceTracking.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Student");
+                name: "Students");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

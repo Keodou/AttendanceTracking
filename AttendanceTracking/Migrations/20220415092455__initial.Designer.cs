@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AttendanceTracking.Migrations
 {
     [DbContext(typeof(AttendanceTrackingDbContext))]
-    [Migration("20220414222407__initial")]
+    [Migration("20220415092455__initial")]
     partial class _initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace AttendanceTracking.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Student");
+                    b.ToTable("Students");
 
                     b.HasData(
                         new

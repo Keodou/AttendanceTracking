@@ -41,7 +41,7 @@ namespace AttendanceTracking.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Student");
+                    b.ToTable("Students");
 
                     b.HasData(
                         new
