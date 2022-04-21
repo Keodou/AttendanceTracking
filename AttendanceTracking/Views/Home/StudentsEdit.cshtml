@@ -4,37 +4,48 @@
     ViewData["Title"] = "Students Edit";
 }
 
-<div>
-    <h1>Редактировать данные</h1>
-    <div>
-        <form asp-controller="Home" asp-action="StudentsEdit" method="post">
-            <input type="hidden" asp-for="Id" />
-            <div asp-validation-summary="All"></div>
+<!DOCTYPE html>
 
-            <div>
-                <label asp-for="Name"></label>
-                <input asp-for="Name" />
-                <span asp-validation-for="Name"></span>
-            </div>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Авторизация | Login</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/style-login.css" />
+    </head>
+    <body>
+        <div class="panel panel-success">
+            <div class="panel-heading text-center"><h2>Редактировать данные</h2></div>
+            <div class="panel-body">
+                <form class="p-1" asp-controller="Home" asp-action="StudentsEdit" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="All"></div>
 
-            <div>
-                <label asp-for="Group"></label>
-                <input asp-for="Group" />
-                <span asp-validation-for="Group"></span>
-            </div>
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input class="form-control" asp-for="Name" />
+                        <span asp-validation-for="Name"></span>
+                    </div>
 
-            <div>
-                <label asp-for="Attendance"></label>
-                <input asp-for="Attendance" />
-                <span asp-validation-for="Attendance"></span>
-            </div>
+                    <div class="form-group"> 
+                        <label asp-for="Group"></label>
+                        <input class="form-control" asp-for="Group" />
+                        <span asp-validation-for="Group"></span>
+                    </div>
 
-            <div>
-                <label asp-for="Id"></label>
-                <input asp-for="Id" />
-                <span asp-validation-for="Id"></span>
+                    <div class="form-group"> 
+                        <label asp-for="Attendance"></label>
+                        <input class="form-control" asp-for="Attendance" />
+                        <span asp-validation-for="Attendance"></span>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit">
+                            Сохранить
+                        </button>
+                    </div>
+                </form>
             </div>
-            <input type="submit" value="Сохранить" />
-        </form>
-    </div>
-</div>
+        </div>
+    </body>
+</html>

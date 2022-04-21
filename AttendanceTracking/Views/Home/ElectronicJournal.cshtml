@@ -11,13 +11,12 @@
         <meta name = "viewport" content="width-device-width" />
         <title>Электронный журнал</title>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/style.css" />
     </head>
     <body>
         <div class="panel-text-table">
             <h2>Журнал учета посещаемости студентов</h2>
-            <a asp-controller="Home" asp-action="StudentsEdit">Добавить</a>
-            @foreach (Student entity in Model) {
+            <div class="text-center">
+            </div>
                 <table class="table table-sm table-striped table-bordered">
                     <thead>
                         <tr>
@@ -25,24 +24,34 @@
                             <th>Имя</th>
                             <th>Группа</th>
                             <th>Посещаемость</th>
+                            <th>Опции</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>@entity.Id</td>
-                            <td>@entity.Name</td>
-                            <td>@entity.Group</td>
-                            <td>@entity.Attendance</td>
-                        </tr>
-                </tbody>
-            </table>
-            <a asp-controller="Home" asp-action="StudentsEdit" asp-route-id="@entity.Id">редактировать</a>
+                        @foreach (Student entity in Model) {
+                            <tr>
+                                <td>@entity.Id</td>
+                                <td>@entity.Name</td>
+                                <td>@entity.Group</td>
+                                <td>@entity.Attendance</td>
+                                <td>
+                                    <form method="get" asp-controller="Home" asp-action="StudentsEdit" asp-route-id="@entity.Id">
+                                        <input type="submit" value="Редактировать" />
+                                    </form>
 
-            <form method="post" asp-controller="Home" asp-action="StudentsDelete">
-                <input type="hidden" name="Id" value="@entity.Id"/>
-                <input type="submit" value="удалить"/>
-            </form>
-            }
+                                    <form method="post" asp-controller="Home" asp-action="StudentsDelete">
+                                        <input type="hidden" name="Id" value="@entity.Id"/>
+                                        <input type="submit" value="      Удалить     "/>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            <div class="text-center">
+                <a asp-controller="Home" asp-action="StudentsEdit">Добавить</a>
+            </div>
         </div>
     </body>
 </html>
