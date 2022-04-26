@@ -28,8 +28,8 @@ namespace AttendanceTracking.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Attendance")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool?>("Attendance")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Group")
                         .IsRequired()

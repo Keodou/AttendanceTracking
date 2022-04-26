@@ -16,6 +16,6 @@ namespace AttendanceTracking.Models
         public string Group { get; set; }
 
         [Display(Name = "Посещаемость")]
-        public string? Attendance { get; set; }
+        public bool? Attendance { get; set; }
     }
 }

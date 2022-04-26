@@ -55,7 +55,7 @@ namespace AttendanceTracking.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Group = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Attendance = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Attendance = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
