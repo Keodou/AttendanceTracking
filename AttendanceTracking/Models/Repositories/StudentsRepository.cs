@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AttendanceTracking.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace AttendanceTracking.Models
+namespace AttendanceTracking.Models.Repositories
 {
     public class StudentsRepository
     {
@@ -19,6 +20,11 @@ namespace AttendanceTracking.Models
         public Student GetStudentById(Guid id)
         {
             return context.Students.Single(x => x.Id == id);
+        }
+
+        public Student GetStudentByGroup(string group)
+        {
+            return context.Students.Single(x => x.Group == group);
         }
 
         public Guid SaveStudent(Student entity)

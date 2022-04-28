@@ -1,4 +1,6 @@
 ﻿using AttendanceTracking.Models;
+using AttendanceTracking.Models.Entities;
+using AttendanceTracking.Models.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -55,26 +57,6 @@ namespace AttendanceTracking.Controllers
             studentsRepository.DeleteStudent(new Student() { Id = id });
             return RedirectToAction("ElectronicJournal");
         }
-
-        /*[HttpGet]
-        public IActionResult LoginForm()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult LoginForm(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                return View("ElectronicJournal");
-            }
-
-            else
-            {
-                return View();
-            }
-        }*/
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

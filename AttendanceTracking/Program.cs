@@ -1,4 +1,7 @@
 using AttendanceTracking.Models;
+using AttendanceTracking.Models.Repositories;
+using AttendanceTracking.Service;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +12,39 @@ builder.Services.AddDbContext<AttendanceTrackingDbContext>(x => x.UseSqlServer(
     "Data Source=(localdb)\\MSSQLLocalDB; Database=AttendanceTracking; Persist Security Info=False; MultipleActiveResultSets=True; Trusted_Connection=True;"
     ));
 builder.Services.AddTransient<StudentsRepository>();
+
+// Setting identity system
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(opts =>
+{
+    opts.User.RequireUniqueEmail = true;
+    opts.Password.RequiredLength = 6;
+    opts.Password.RequireNonAlphanumeric = false;
+    opts.Password.RequireLowercase = false;
+    opts.Password.RequireUppercase = false;
+    opts.Password.RequireDigit = true;
+}).AddEntityFrameworkStores<AttendanceTrackingDbContext>().AddDefaultTokenProviders();
+
+// Setting authentifiaction cookie
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.Name = "attendanceTracking";
+    options.Cookie.HttpOnly = true;
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/Accessdenied";
+    options.SlidingExpiration = true;
+});
+
+// Setting authorisation policy for Admin area
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("AdminArea", policy => { policy.RequireRole("admin"); });
+});
+
+// Added services for Controllers and Views
+builder.Services.AddControllersWithViews(x =>
+{
+    x.Conventions.Add(new AdminAreaAuthorization("Admin", "AdminArea"));
+});
 
 var app = builder.Build();
 
@@ -25,7 +61,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Authorization and Authentication
+app.UseCookiePolicy();
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "admin",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",
