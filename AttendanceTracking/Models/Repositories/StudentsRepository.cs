@@ -22,9 +22,9 @@ namespace AttendanceTracking.Models.Repositories
             return context.Students.Single(x => x.Id == id);
         }
 
-        public Student GetStudentByGroup(string group)
+        public IQueryable<Student> GetStudentByGroup()
         {
-            return context.Students.Single(x => x.Group == group);
+            return context.Students.OrderBy(x => x.Group);
         }
 
         public Guid SaveStudent(Student entity)

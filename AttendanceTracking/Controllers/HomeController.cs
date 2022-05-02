@@ -33,7 +33,7 @@ namespace AttendanceTracking.Controllers
             return View(model);
         }
 
-        public IActionResult StudentsEdit(Guid id)
+        /*public IActionResult StudentsEdit(Guid id)
         {
             Student model = id == default ? new Student() : studentsRepository.GetStudentById(id);
             return View(model);
@@ -56,37 +56,12 @@ namespace AttendanceTracking.Controllers
         {
             studentsRepository.DeleteStudent(new Student() { Id = id });
             return RedirectToAction("ElectronicJournal");
-        }
+        }*/
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        /*public ViewResult Index() 
-        { 
-            return View("WelcomePage"); 
-        }
-
-        [HttpGet]
-        public ViewResult LoginForm()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ViewResult LoginForm(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                return View("ElectronicJournal");
-            }
-
-            else
-            {
-                return View();
-            }
-        }*/
     }
 }
