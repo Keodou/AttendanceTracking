@@ -27,36 +27,27 @@ namespace AttendanceTracking.Controllers
             return View();
         }
 
-        public IActionResult ElectronicJournal()
+        public IActionResult ElectronicJournal(string group)
         {
-            var model = studentsRepository.GetStudents();
-            return View(model);
-        }
+            ViewData["Group90001997SortParm"] = string.IsNullOrEmpty(group) ? "90001997" : "";
+            var model = studentsRepository.GetStudents(group);
 
-        /*public IActionResult StudentsEdit(Guid id)
-        {
-            Student model = id == default ? new Student() : studentsRepository.GetStudentById(id);
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult StudentsEdit(Student model)
-        {
-            if (ModelState.IsValid)
+            switch (group)
             {
-                studentsRepository.SaveStudent(model);
-                return RedirectToAction("ElectronicJournal");
-            }
+                case "Group90001997SortParm":
+                    model = studentsRepository.GetStudents("90001997");
+                    break;
 
+                case "90001996":
+                    model = studentsRepository.GetStudents("90001996");
+                    break;
+
+                case "90001995":
+                    model = studentsRepository.GetStudents("90001997");
+                    break;
+            }
             return View(model);
         }
-
-        [HttpPost]
-        public IActionResult StudentsDelete(Guid id)
-        {
-            studentsRepository.DeleteStudent(new Student() { Id = id });
-            return RedirectToAction("ElectronicJournal");
-        }*/
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

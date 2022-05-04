@@ -14,11 +14,15 @@
     <body>
         <div class="panel-text-table">
             <h2>Журнал учета посещаемости студентов</h2>
-            <select class="form-control" asp-action="Attendance">
-                  <option value="">90001995</option>
-                  <option value="true">90001996</option>
-                  <option value="false">9000199</option>
+            <select class="form-control" asp-action="Home">
+                  <option value="90001996">90001996</option>
+                  <option value="90001996">90001996</option>
+                  <option value="90001997">90001997</option>
             </select>
+
+            <a asp-action="ElectronicJournal" asp-route-group="@ViewData["Group90001997SortParm"]">90001997</a>
+            <a asp-action="ElectronicJournal" asp-route-group="@ViewData["Group90001996SortParm"]">90001996</a>
+            <a asp-action="ElectronicJournal" asp-route-group="@ViewData["Group90001995SortParm"]">90001995</a>
             <div class="text-center">
             </div>
                 <table class="table table-sm table-striped table-bordered">

@@ -17,14 +17,14 @@ namespace AttendanceTracking.Models.Repositories
             return context.Students.OrderBy(x => x.Name);
         }
 
+        public IQueryable<Student> GetStudents(string group)
+        {
+            return context.Students.Where(x => x.Group == group);
+        }
+
         public Student GetStudentById(Guid id)
         {
             return context.Students.Single(x => x.Id == id);
-        }
-
-        public IQueryable<Student> GetStudentByGroup()
-        {
-            return context.Students.OrderBy(x => x.Group);
         }
 
         public Guid SaveStudent(Student entity)
