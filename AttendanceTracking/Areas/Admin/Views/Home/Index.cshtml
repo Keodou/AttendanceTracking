@@ -7,50 +7,59 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta name = "viewport" content="width-device-width" />
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    </head>
-    <body>
-        <div class="panel-text-table">
-            <h2>Журнал учета посещаемости студентов</h2>
-            <div class="text-center">
-            </div>
-                <table class="table table-sm table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Имя</th>
-                            <th>Группа</th>
-                            <th>Посещаемость</th>
-                            <th>Опции</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (Student entity in Model) {
-                            <tr>
-                                <td>@entity.Name</td>
-                                <td>@entity.Group</td>
-                                <td>@entity.Attendance</td>
-                                <td>
-                                    <form method="get" asp-area="Admin" asp-controller="Home" asp-action="StudentsEdit" asp-route-id="@entity.Id">
-                                        <input type="submit" value="Редактировать" />
-                                    </form>
-
-                                    <form method="post" asp-area="Admin" asp-controller="Home" asp-action="StudentsDelete">
-                                        <input type="hidden" name="Id" value="@entity.Id"/>
-                                        <input type="submit" value="      Удалить     "/>
-                                    </form>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-
-            <div class="text-center">
-                <a asp-controller="Home" asp-action="StudentsEdit">Добавить</a>
-            </div>
+<head>
+    <meta name="viewport" content="width-device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="panel-text-table">
+        <h2>Журнал учета посещаемости студентов</h2>
+        <hr />
+        <label>Группа: </label>
+        <a asp-action="Index" asp-route-group="@ViewData["Group90001997SortParm"]">90001997</a>
+        <a asp-action="Index" asp-route-group="@ViewData["Group90001996SortParm"]">90001996</a>
+        <a asp-action="Index" asp-route-group="@ViewData["Group90001995SortParm"]">90001995</a>
+        <hr />
+        <div class="text-center">
         </div>
-    </body>
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Имя</th>
+                    <th>Группа</th>
+                    <th>RFID метка</th>
+                    <th>Посещаемость</th>
+                    <th>Опции</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Student entity in Model)
+                {
+                    <tr>
+                        <td>@entity.Name</td>
+                        <td>@entity.Group</td>
+                        <td>@entity.RfidId</td>
+                        <td>@entity.Attendance</td>
+                        <td>
+                            <form method="get" asp-area="Admin" asp-controller="Home" asp-action="StudentsEdit" asp-route-id="@entity.Id">
+                                <input type="submit" value="Редактировать" />
+                            </form>
+
+                            <form method="post" asp-area="Admin" asp-controller="Home" asp-action="StudentsDelete">
+                                <input type="hidden" name="Id" value="@entity.Id" />
+                                <input type="submit" value="      Удалить     " />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <a asp-controller="Home" asp-action="StudentsEdit">Добавить</a>
+        </div>
+    </div>
+</body>
 </html>
 <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
     <input type="submit" value="Выйти" />

@@ -1,5 +1,4 @@
 ﻿using AttendanceTracking.Models;
-using AttendanceTracking.Models.Entities;
 using AttendanceTracking.Models.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -29,7 +28,10 @@ namespace AttendanceTracking.Controllers
 
         public IActionResult ElectronicJournal(string group)
         {
-            ViewData["Group90001997SortParm"] = string.IsNullOrEmpty(group) ? "90001997" : "";
+            ViewData["Group90001997SortParm"] = string.IsNullOrEmpty(group) ? "90001997" : "90001997";
+            ViewData["Group90001996SortParm"] = string.IsNullOrEmpty(group) ? "90001996" : "90001996";
+            ViewData["Group90001995SortParm"] = string.IsNullOrEmpty(group) ? "90001995" : "90001995";
+
             var model = studentsRepository.GetStudents(group);
 
             switch (group)
@@ -38,11 +40,11 @@ namespace AttendanceTracking.Controllers
                     model = studentsRepository.GetStudents("90001997");
                     break;
 
-                case "90001996":
+                case "Group90001996SortParm":
                     model = studentsRepository.GetStudents("90001996");
                     break;
 
-                case "90001995":
+                case "Group90001995SortParm":
                     model = studentsRepository.GetStudents("90001997");
                     break;
             }

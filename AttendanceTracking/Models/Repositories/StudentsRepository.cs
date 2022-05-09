@@ -17,9 +17,16 @@ namespace AttendanceTracking.Models.Repositories
             return context.Students.OrderBy(x => x.Name);
         }
 
+        /// <summary>
+        /// Returns students by the specified group attribute.
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
         public IQueryable<Student> GetStudents(string group)
         {
-            return context.Students.Where(x => x.Group == group);
+            return context.Students
+                .Where(x => x.Group == group)
+                .OrderBy(x => x.Name);
         }
 
         public Student GetStudentById(Guid id)

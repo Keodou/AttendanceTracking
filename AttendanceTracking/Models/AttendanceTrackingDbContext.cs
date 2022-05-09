@@ -23,6 +23,7 @@ namespace AttendanceTracking.Models
                 Id = new Guid("716C2E99-6F6C-4472-81A5-43C56E11637C"),
                 Name = "Кирилл Володько",
                 Group = "90001997",
+                RfidId = " 99 62 36 BB ",
             });
 
             builder.Entity<IdentityRole>().HasData(new IdentityRole

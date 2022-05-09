@@ -33,6 +33,12 @@
                     </div>
 
                     <div class="form-group"> 
+                        <label asp-for="RfidId"></label>
+                        <input class="form-control" asp-for="RfidId" />
+                        <span asp-validation-for="RfidId"></span>
+                    </div>
+
+                    <div class="form-group"> 
                         <label asp-for="Attendance"></label>
                         <select class="form-control" asp-for="Attendance">
                             <option value="">Посещаемость</option>

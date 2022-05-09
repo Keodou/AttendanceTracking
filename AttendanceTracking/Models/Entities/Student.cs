@@ -15,6 +15,9 @@ namespace AttendanceTracking.Models.Entities
         [Display(Name = "Группа студента")]
         public string Group { get; set; }
 
+        [Display(Name = "RFID-метка студента")]
+        public string RfidId { get; set; }
+
         [Display(Name = "Посещаемость")]
         public bool? Attendance { get; set; }
     }
