@@ -1,0 +1,44 @@
+﻿@model IQueryable<Student>
+
+@{
+    ViewData["Title"] = "Электронный журнал";
+}
+<div class="panel-text-table">
+    <div class="text-center">
+        <h2>Журнал учета посещаемости студентов</h2>
+    </div>
+    <div class="text-center">
+    </div>
+    <table class="table table-sm table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Группа</th>
+                <th>Посещаемость</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entity in Model)
+            {
+                <tr>
+                    <td>@entity.Name</td>
+                    <td>@entity.Attendance</td>
+                    <td>@entity.AttendanceTime</td>
+                    <td>
+                        <form method="get" asp-area="" asp-controller="Journal" asp-action="StudentsEdit" asp-route-id="@entity.Id">
+                            <input type="submit" value="Редактировать" />
+                        </form>
+
+                        <form method="post" asp-area="" asp-controller="Journal" asp-action="StudentsDelete">
+                            <input type="hidden" name="Id" value="@entity.Id" />
+                            <input type="submit" value="      Удалить     " />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-center">
+        <a class="btn btn-primary" asp-controller="Journal" asp-action="StudentsEdit">Добавить</a>
+    </div>
+</div>

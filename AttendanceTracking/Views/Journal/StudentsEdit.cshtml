@@ -1,0 +1,45 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Students Edit";
+}
+
+<div class="panel panel-success">
+    <div class="panel-heading text-center"><h2>Обновить данные</h2></div>
+    <div class="panel-body">
+        <form class="p-1" asp-controller="Journal" asp-action="StudentsEdit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div asp-validation-summary="All"></div>
+
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input class="form-control" asp-for="Name" />
+                <span asp-validation-for="Name"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="RFIDTag"></label>
+                <input class="form-control" asp-for="RFIDTag" />
+                <span asp-validation-for="RFIDTag"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Attendance"></label>
+                <input class="form-control" asp-for="Attendance" />
+                <span asp-validation-for="Attendance"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AttendanceTime"></label>
+                <input class="form-control" asp-for="AttendanceTime" />
+                <span asp-validation-for="AttendanceTime"></span>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit">
+                    Сохранить
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

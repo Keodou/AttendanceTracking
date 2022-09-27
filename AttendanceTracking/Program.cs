@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AttendanceTrackingDbContext>(x => x.UseSqlServer(
-    "Data Source=(localdb)\\MSSQLLocalDB; Database=AttendanceTracking; Persist Security Info=False; MultipleActiveResultSets=True; Trusted_Connection=True;"
+    builder.Configuration.GetConnectionString("SystemConnection")
     ));
 builder.Services.AddTransient<StudentsRepository>();
 
@@ -66,12 +66,12 @@ app.UseCookiePolicy();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
+/*app.MapControllerRoute(
     name: "Admin",
-    pattern: "{area:exists}/{controller=Students}/{action=Index}/{id?}");
+    pattern: "{area:exists}/{controller=Students}/{action=Index}/{id?}");*/
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Journal}/{action=List}/{id?}");
 
 app.Run();

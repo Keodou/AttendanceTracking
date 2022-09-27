@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="panel-text-table">
-        <h2>Журнал учета посещаемости студентов</h2>
+        <h2>Панель администратора</h2>
         <hr />
         <label>Группа: </label>
         <a asp-action="Index" asp-route-group="@ViewData["Group90001997SortParm"]">90001997</a>
@@ -33,13 +33,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (Student entity in Model)
+                @foreach (var entity in Model)
                 {
                     <tr>
                         <td>@entity.Name</td>
-                        <td>@entity.Group</td>
-                        <td>@entity.RfidId</td>
+                        <td>@entity.RFIDTag</td>
                         <td>@entity.Attendance</td>
+                        <td>@entity.AttendanceTime</td>
                         <td>
                             <form method="get" asp-area="Admin" asp-controller="Students" asp-action="StudentsEdit" asp-route-id="@entity.Id">
                                 <input type="submit" value="Редактировать" />
@@ -56,7 +56,7 @@
         </table>
 
         <div class="text-center">
-            <a asp-controller="Students" asp-action="StudentsEdit">Добавить</a>
+            <a class="btn btn-primary" asp-controller="Students" asp-action="StudentsEdit">Добавить</a>
         </div>
     </div>
 </body>

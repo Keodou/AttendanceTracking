@@ -14,7 +14,7 @@ namespace AttendanceTracking.Areas.Admin.Controllers
             this.studentsRepository = studentsRepository;
         }
 
-        public IActionResult Index(string group)
+        /*public IActionResult Index(string group)
         {
             ViewData["Group90001997SortParm"] = string.IsNullOrEmpty(group) ? "90001997" : "90001997";
             ViewData["Group90001996SortParm"] = string.IsNullOrEmpty(group) ? "90001996" : "90001996";
@@ -37,9 +37,9 @@ namespace AttendanceTracking.Areas.Admin.Controllers
                     break;
             }
             return View(model);
-        }
+        }*/
 
-        public IActionResult StudentsEdit(Guid id)
+        public IActionResult StudentsEdit(int id)
         {
             Student model = id == default ? new Student() : studentsRepository.GetStudentById(id);
             return View(model);
@@ -58,7 +58,7 @@ namespace AttendanceTracking.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult StudentsDelete(Guid id)
+        public IActionResult StudentsDelete(int id)
         {
             studentsRepository.DeleteStudent(new Student() { Id = id });
             return RedirectToAction("Index");

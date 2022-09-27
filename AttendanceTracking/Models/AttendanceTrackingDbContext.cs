@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AttendanceTracking.Models
 {
-    public class AttendanceTrackingDbContext : IdentityDbContext<IdentityUser>
+    public class AttendanceTrackingDbContext : DbContext
     {
         public AttendanceTrackingDbContext(DbContextOptions options) : base(options)
         {
@@ -14,7 +14,7 @@ namespace AttendanceTracking.Models
 
         public DbSet<Student> Students { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        /*protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
@@ -50,6 +50,6 @@ namespace AttendanceTracking.Models
                 RoleId = "44546e06-8719-4ad8-b88a-f271ae9d6eab",
                 UserId = "3b62472e-4f66-49fa-a20f-e7685b9565d8"
             });
-        }
+        }*/
     }
 }
